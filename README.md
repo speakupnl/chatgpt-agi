@@ -1,6 +1,6 @@
 # Asterisk ChatGPT intergration -  Proof of Concept
 
-Read the blogpost about this [here](https://developer.speakup.nl)
+Read the blogpost about this [here](https://developer.speakup.nl/asterisk-meets-chatgpt-enhancing-telecommunications-with-ai/)
 
 A proof of concept AGI script that integrates Asterisk with ChatGPT to hold converstations with ChatGPT.
 
@@ -10,12 +10,12 @@ Clone the repo somewhere on your Asterisk system. For example, to `/usr/local/sr
 
 ```bash
 cd /usr/local/src/
-https://github.com/speakupnl/chatgpt-agi.git
+git clone https://github.com/speakupnl/chatgpt-agi.git
 ```
 
 Then, create a virtual environment and install the dependencies:
 
-```
+```bash
 cd chatgpt-agi
 python3 -m venv venv
 source venv/bin/activate
@@ -40,13 +40,13 @@ cp chatgpt-welcome.wav /usr/share/asterisk/sounds/
 
 Next, edit your `extensions.conf`. 
 
-```
+```bash
 vim /etc/asterisk/extensions.conf
 ```
 
 Here is an example of what the dialplan might look like. Replace the phone number to your own.
 
-```
+```ini
 exten = 31532401205,1,Noop(ChatGPT)
  same = n,answer()
  same = n,AGI(/usr/local/src/chatgpt-agi/venv/bin/python3 /usr/local/src/chatgpt-agi/openai_agi.py)
